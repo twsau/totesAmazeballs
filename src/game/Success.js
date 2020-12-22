@@ -19,7 +19,7 @@ export default class Success extends Container {
 		this.zIndex = 10;
 	}
 	show() {
-		if (this.y > this.bounds.height / 3) {
+		if (this.y > this.bounds.height / 2) {
 			this.position.set(this.position.x, this.position.y - 15);
 		} else {
 			this.bg.clear().lineStyle(3, this.col).drawRect(-150, -100, 300, 200).endFill();

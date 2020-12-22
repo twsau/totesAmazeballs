@@ -18,10 +18,39 @@ canvas {
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 	height: 540px;
 	left: 50%;
-	max-height: 100%;
-	max-width: 100%;
+	max-height: 100vw;
+	max-width: 100vw;
 	position: absolute;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 540px;
+}
+
+.controls {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	top: 83%;
+	width: 100%;
+}
+
+.controls div {
+	align-items: center;
+	background-color: #060915;
+	border: 1px solid white;
+	color: white;
+	display: flex;
+	height: 4.5rem;
+	justify-content: center;
+	font-family: 'Press Start 2P';
+	font-size: 1.5rem;
+	outline: none;
+	user-select: none;
+	width: 50%;
+}
+
+@media only screen and (min-width: 600px) {
+	.controls {
+		display: none;
+	}
 }

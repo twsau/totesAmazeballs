@@ -30,6 +30,7 @@ export default class Platform {
 		this.sprite.anchor.set(0.5);
 		if (shadow) {
 			this.sprite.filters = [new DropShadowFilter({
+				blur: 1,
 				distance: 5,
 				rotation: 90,
 				quality: 0.1

@@ -13,7 +13,7 @@ export default class Maze {
 			'S': {y: 1, x: 0, o: 'N'},
 			'W': {y: 0, x: -1, o: 'E'}
 		};
-		this.build(0, Math.floor(this.height / 2));
+		this.build(0, this.height - 1);
 	}
 	build(x, y) {
 		this.explore(x, y);
@@ -26,13 +26,13 @@ export default class Maze {
 	}
 	explore(ex, ey) {
 		this.dirs = shuffle(this.dirs);
+		let cell = this.getCell(ex, ey);
+		cell.visited = true;
 		this.dirs.forEach(d => {
 			let nx = ex + this.modDir[d].x;
 			let ny = ey + this.modDir[d].y;
 			if (nx >= 0 && nx < this.width && ny >= 0 && ny < this.height && this.getCell(nx, ny).visited == false) {
-				let cell = this.getCell(ex, ey);
 				cell[d] = true;
-				cell.visited = true;
 				let nextCell = this.getCell(nx, ny);
 				nextCell[this.modDir[d].o] = true;
 				this.explore(nx, ny);

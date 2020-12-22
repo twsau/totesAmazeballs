@@ -1,5 +1,5 @@
 import { Application, Loader, TilingSprite } from 'pixi.js';
-import { CRTFilter } from 'pixi-filters';
+import { CRTFilter, ZoomBlurFilter } from 'pixi-filters';
 import { Composite, Engine, Events, use, World } from 'matter-js';
 import 'matter-attractors';
 use('matter-attractors');
@@ -24,8 +24,8 @@ const config = {
 const settings = {
 	drawDistance: 400,
 	maze: {
-		width: 10,
-		height: 10
+		width: 15,
+		height: 15
 	}
 }
 
@@ -40,19 +40,29 @@ export default class App extends Application {
 			objects: [],
 			player: new Player(10, 100 * settings.maze.height - 10),
 			success: new Success(this.screen),
-			endRound: false
+			endRound: false,
+			go: {
+				left: false,
+				right: false
+			}
 		});
-		kbEvents(this);
+		inputEvents(this);
 		this.camera.setTarget(this.player.body.position);
 		this.stage.addChild(this.bg, this.camera, this.success);
 		this.stage.filters = [
+			new ZoomBlurFilter({
+				center: [270, 270],
+				innerRadius: 200,
+				radius: 270,
+				strength: -0.2
+			}),
 			new CRTFilter({
 				curvature: 0,
 				lineContrast: 0.000001,
 				noise: 0.1,
 				noiseSize: 1,
 				vignetting: 0.41,
-				vignettingAlpha: 1,
+				vignettingAlpha: 1.1,
 				vignettingBlur: 1
 			})
 		];
@@ -67,6 +77,12 @@ export default class App extends Application {
 			this.success.show();
 		} else {
 			this.success.hide();
+			if (this.go.left) {
+				this.rotateLeft();
+			}
+			if (this.go.right) {
+				this.rotateRight();
+			}
 		}
 		this.stage.filters[0].time += 0.1;
 		this.stage.filters[0].seed += 0.1;
@@ -87,6 +103,12 @@ export default class App extends Application {
 		this.player.moveTo(10, 100 * settings.maze.height - 10);
 		Scene.add(this, this.player);
 		this.endRound = false;
+	}
+	rotateLeft() {
+		Composite.rotate(this.engine.world, -Math.PI / 180, {x: 100 * settings.maze.width / 2, y: 100 * settings.maze.height / 2});
+	}
+	rotateRight() {
+		Composite.rotate(this.engine.world, Math.PI / 180, {x: 100 * settings.maze.width / 2, y: 100 * settings.maze.height / 2});
 	}
 }
 
@@ -167,22 +189,48 @@ const buildMap = app => {
 	});
 }
 
-const kbEvents = app => {
+const inputEvents = app => {
 	document.addEventListener('keydown', e => {
-		if (e.key == 'ArrowLeft') {
-			if (app.endRound && app.success.y == app.screen.height / 3) {
+		if (e.key == 'ArrowLeft' || e.key.toLowerCase() == 'a') {
+			if (app.endRound && app.success.y == app.screen.height / 2) {
 				app.newRound();
 			} else {
-				Composite.rotate(app.engine.world, -1 * Math.PI / 180, {x: 100 * settings.maze.width / 2, y: 100 * settings.maze.height / 2});
+				app.go.left = true;
 			}
 		}
-		if (e.key == 'ArrowRight') {
-			if (app.endRound && app.success.y == app.screen.height / 3) {
+		if (e.key == 'ArrowRight' || e.key.toLowerCase() == 'd') {
+			if (app.endRound && app.success.y == app.screen.height / 2) {
 				app.newRound();
 			} else {
-				Composite.rotate(app.engine.world, 1 * Math.PI / 180, {x: 100 * settings.maze.width / 2, y: 100 * settings.maze.height / 2});
+				app.go.right = true;
 			}
 		}
+	});
+	document.addEventListener('keyup', e => {
+		if  (e.key == 'ArrowLeft' || e.key.toLowerCase() == 'a') {
+			app.go.left = false;
+		}
+		if (e.key == 'ArrowRight' || e.key.toLowerCase() == 'd') {
+			app.go.right = false;
+		}
+	});
+	const left = document.getElementById('left');
+	const right = document.getElementById('right')
+	left.addEventListener('pointerdown', e => {
+		e.preventDefault();
+		app.go.left = true;
+	});
+	right.addEventListener('pointerdown', e => {
+		e.preventDefault();
+		app.go.right = true;
+	});
+	left.addEventListener('pointerup', e => {
+		e.preventDefault();
+		app.go.left = false;
+	});
+	right.addEventListener('pointerup', e => {
+		e.preventDefault();
+		app.go.right = false;
 	});
 }
 

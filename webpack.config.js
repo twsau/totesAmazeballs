@@ -29,7 +29,7 @@ module.exports = {
 	},
 	plugins: [
     	new HtmlWebpackPlugin({
-	    	title: 'pixi-matter-webpack',
+	    	title: 'amazeballs',
 	    	template: path.resolve(__dirname, './src/template.html'), // template file
 	    	filename: 'index.html', // output file
 			}),

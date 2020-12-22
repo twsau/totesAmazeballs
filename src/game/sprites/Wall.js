@@ -17,7 +17,7 @@ export default class Wall {
 			distance: 70,
 			rotation: 90
 		})];
-		this.sprite.tint = 0.4 * 0xffffff;
+		this.sprite.tint = 0.8 * 0xffffff;
 		this.sprite.position.set(x, y);
 		this.sprite.zIndex = 1;
 		this.alwaysRender = true;
