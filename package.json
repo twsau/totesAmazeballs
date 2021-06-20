@@ -1,5 +1,5 @@
 {
-  "name": "amazeballs",
+  "name": "pixi-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,6 @@
   },
   "keywords": [
     "pixi.js",
-    "matter.js",
     "webpack"
   ],
   "author": "twsau",
@@ -25,11 +24,11 @@
   "dependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.3.1",
-    "matter-attractors": "^0.1.6",
-    "matter-js": "^0.14.2",
-    "pixi-filters": "^3.1.1",
-    "pixi.js": "^5.3.3",
-    "poly-decomp": "^0.3.0",
+    "matter-js": "^0.17.1",
+    "pixi-filters": "^4.1.3",
+    "pixi.js": "^6.0.4",
+    "sass": "^1.34.0",
+    "sass-loader": "^11.1.1",
     "webfontloader": "^1.6.28"
   }
 }

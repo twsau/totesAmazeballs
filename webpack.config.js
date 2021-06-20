@@ -18,9 +18,16 @@ module.exports = {
 	module: {
 	  rules: [
 	    {
-	      test: /\.css$/,
-	      use: ['style-loader', 'css-loader']
-	    }
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      },
 	  ]
 	},
 	output: {
@@ -36,7 +43,7 @@ module.exports = {
 			new CleanWebpackPlugin(),
 			new CopyPlugin({
 	      patterns: [
-	        { from: "src/game/asset", to: "asset" },
+	        { from: "src/asset", to: "asset" },
 	      ],
 	    }),
 	],
