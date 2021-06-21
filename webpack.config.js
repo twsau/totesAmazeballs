@@ -5,8 +5,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+		contentBase: path.join(__dirname, 'dist'),
     compress: true,
+		disableHostCheck: true,
+		host: '0.0.0.0',
     hot: true,
     port: 3000,
     open: 'brave-browser'
