@@ -1,8 +1,11 @@
 import { Bodies } from "matter-js";
 import { Loader, Sprite } from "pixi.js";
+import Settings from '../config/Settings';
 
 export default class Player {
-  constructor(x, y) {
+  constructor() {
+    const x = Settings.maze.cellSize / 2;
+    const y = Settings.maze.cellSize / 2 + Settings.maze.size * Settings.maze.cellSize - 1;
     this.body = Bodies.circle(x, y, 45, { density: 0.001, label: 'player', restitution: 0.4 });
     this.sprite = new Sprite(Loader.shared.resources['ball'].texture);
     this.sprite.anchor.set(0.5);

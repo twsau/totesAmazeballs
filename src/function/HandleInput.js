@@ -1,4 +1,4 @@
-import GameState from './GameState';
+import GameState from '../config/GameState';
 
 function handleKeyboardInput() {
   document.addEventListener('keydown', e => {

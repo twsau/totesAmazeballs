@@ -1,5 +1,5 @@
 import { Events } from "matter-js";
-import GameState from "./GameState";
+import GameState from "../config/GameState";
 
 export default function HandleCollision(app) {
   Events.on(app.engine, 'collisionStart', e => {

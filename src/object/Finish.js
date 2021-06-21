@@ -1,6 +1,6 @@
 import { Bodies } from "matter-js";
 import { Loader, TilingSprite } from "pixi.js";
-import Settings from "./Settings";
+import Settings from "../config/Settings";
 
 export default class Finish {
   constructor(x, y) {
