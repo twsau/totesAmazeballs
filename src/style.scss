@@ -34,16 +34,19 @@ canvas {
   transform: translateX(-50%);
   user-select: none;
   width: 100%;
+  @media (min-width: 600px) {
+    display: none;
+  }
   button {
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #ddd;
     border-radius: 50%;
     color: #ddd;
     font-size: 3rem;
-    height: 5rem;
+    height: 9rem;
     margin: 1rem;
     transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
-    width: 5rem;
+    width: 9rem;
     &.active {
       background-color: #53648f;
       transform: scale(0.9);
