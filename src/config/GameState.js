@@ -1,4 +1,5 @@
 const GameState = {
+  inGame: false,
   turn: {
     left: false,
     right: false
