@@ -34,7 +34,6 @@ function handleKeyboardInput() {
     e.target.classList = [];
   });
   document.addEventListener('pointerup', e => {
-    console.log(e.x);
     if (e.x < window.innerWidth / 2) {
       GameState.turn.left = false;
       e.target.classList = [];
