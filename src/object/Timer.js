@@ -6,7 +6,7 @@ export default class Timer extends Text {
   constructor(screen) {
     super('00:00', Settings.timer.textStyle);
     this.anchor.set(0.5, 1);
-    this.position.set(screen.width / 2, screen.height - 100);
+    this.position.set(screen.width / 2, screen.height - 50);
     this.alwaysRender = true;
     this.alpha = 0.2;
   }

@@ -6,7 +6,7 @@ const Settings = {
   },
   timer: {
     textStyle: {
-      fill: 0xffff00,
+      fill: 0x00ffff,
       fontFamily: 'Press Start 2P',
       fontSize: 52
     }

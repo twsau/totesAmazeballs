@@ -1,4 +1,4 @@
-import { Application } from 'pixi.js';
+import { Application, Loader, Sprite } from 'pixi.js';
 import { Composite, Engine, Runner } from 'matter-js';
 import Camera from './object/Camera';
 import Player from './object/Player';
@@ -19,9 +19,9 @@ export default class App extends Application {
     this.engine = Engine.create();
     HandleInput();
     HandleCollision(this);
-    this.stage.filters = Filters.stage(this.screen);
+    this.stage.filters = [Filters.bulge(this.screen)];
     this.camera = new Camera(this.screen);
-    this.camera.filters = Filters.camera();
+    this.camera.filters = [Filters.vignette()];
     this.newLevel();
     this.ticker.add(delta => this.update(delta));
     Runner.run(this.engine);
