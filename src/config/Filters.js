@@ -5,7 +5,7 @@ const Filters = {
     return new CRTFilter({
       lineWidth: 0,
       vignetting: 0.52,
-      vignettingBlur: 1
+      vignettingBlur: 0.66
     });
   },
   bulge: screen => {
