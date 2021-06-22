@@ -25,10 +25,6 @@ function handleKeyboardInput() {
     GameState.turn.left = false;
     e.target.classList = [];
   });
-  document.getElementById('left').addEventListener('pointerleave', e => {
-    GameState.turn.left = false;
-    e.target.classList = [];
-  });
   document.getElementById('right').addEventListener('pointerdown', e => {
     GameState.turn.right = true;
     e.target.classList = ['active'];
@@ -37,9 +33,15 @@ function handleKeyboardInput() {
     GameState.turn.right = false;
     e.target.classList = [];
   });
-  document.getElementById('right').addEventListener('pointerleave', e => {
-    GameState.turn.right = false;
-    e.target.classList = [];
+  document.addEventListener('pointerup', e => {
+    console.log(e.x);
+    if (e.x < window.innerWidth / 2) {
+      GameState.turn.left = false;
+      e.target.classList = [];
+    } else {
+      GameState.turn.right = false;
+      e.target.classList = [];
+    }
   });
 }
 

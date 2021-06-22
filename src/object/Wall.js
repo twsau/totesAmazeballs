@@ -1,5 +1,6 @@
 import { Bodies } from "matter-js";
 import { Loader, TilingSprite } from "pixi.js";
+import Filters from "../config/Filters";
 
 export default class Wall {
   constructor(x, y, w, h, kwargs = {alwaysRender: false}) {
