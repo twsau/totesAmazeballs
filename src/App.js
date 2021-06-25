@@ -31,7 +31,11 @@ export default class App extends Application {
     Runner.run(this.engine);
   }
   endLevel() {
+    GameState.pause = true;
     GameState.inGame = false;
+    GameState.endTime = this.timer.time;
+    this.menu.display('victory');
+    this.menu.visible = true;
   }
   newLevel() {
     GameState.newLevel(this.ticker.lastTime);
