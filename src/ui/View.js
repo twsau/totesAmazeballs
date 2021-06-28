@@ -19,6 +19,15 @@ const View = {
     };
     return View.build(credits, items);
   },
+  controls: menu => {
+    let controls = new Container();
+    let items = {
+      desktop: Element.Label('desktop: arrow keys'),
+      mobile: Element.Label('mobile: on-screen buttons'),
+      back: Element.Button('back', () => menu.display('main'))
+    }
+    return View.build(controls, items);
+  },
   highscores: menu => {
     let highscores = new Container();
     let items = {
@@ -41,6 +50,7 @@ const View = {
       play: Element.Button('play', () => menu.display('game')),
       settings: Element.Button('settings', () => menu.display('settings')),
       //highscores: Element.Button('highscores', () => menu.display('highscores')),
+      controls: Element.Button('controls', () => menu.display('controls')),
       credits: Element.Button('credits', () => menu.display('credits'))
     };
     return View.build(main, items);

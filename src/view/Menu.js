@@ -10,6 +10,7 @@ export default class Menu extends Container {
       main: View.main(this),
       settings: View.settings(this),
       highscores: View.highscores(this),
+      controls: View.controls(this),
       credits: View.credits(this),
       victory: View.victory(this)
     };
