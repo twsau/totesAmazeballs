@@ -22,16 +22,19 @@ canvas {
   width: 640px;
   z-index: 2;
   @media all and (orientation: landscape) {
-    max-height: 80vh;
-    max-width: 80vh;
+    bottom: 1rem;
+    max-height: 60vh;
+    max-width: 60vh;
+    top: auto;
   }
   @media all and (orientation: portrait) {
-    top: 40%;
+    top: 2rem;
+    transform: translate(-50%, 0);
   }
 }
 
 .controls {
-  bottom: 0;
+  bottom: 6rem;
   display: flex;
   justify-content: space-between;
   left: 50%;
@@ -45,14 +48,14 @@ canvas {
     }
   }
   @media all and (orientation: landscape) {
-    align-items: center;
+    align-items: flex-end;
     height: 100%;
     @media (min-height: 600px) {
       display: none;
     }
   }
   button {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid #ddd;
     border-radius: 50%;
     color: #ddd;
@@ -71,4 +74,19 @@ canvas {
     }
   }
   z-index: 1;
+}
+
+footer {
+  align-items: center;
+  background-color: white;
+  bottom: 0;
+  display: flex;
+  height: 6rem;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  img {
+    height: 4rem;
+  }
 }
